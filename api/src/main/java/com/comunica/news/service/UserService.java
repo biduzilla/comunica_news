@@ -1,10 +1,11 @@
 package com.comunica.news.service;
 
+import com.comunica.news.dto.TokenDto;
 import com.comunica.news.dto.UserDto;
 import com.comunica.news.dto.UserLoginDto;
 
 public interface UserService {
-    UserDto cadastrarUser(UserDto usuario);
+    void cadastrarUser(UserDto usuario);
 
-    UserDto login(UserLoginDto login);
+    TokenDto login(UserLoginDto login);
 }

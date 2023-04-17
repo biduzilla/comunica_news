@@ -1,10 +1,7 @@
 package com.comunica.news.controller;
 
 import com.comunica.news.erros.ApiError;
-import com.comunica.news.exception.EmailJaCadastrado;
-import com.comunica.news.exception.EmailNaoEncontrado;
-import com.comunica.news.exception.SenhaInvalidaException;
-import com.comunica.news.exception.TokenInvalidoException;
+import com.comunica.news.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -34,6 +31,11 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler(TokenInvalidoException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleTokenInvalidoException(TokenInvalidoException ex) {
+        return new ApiError(ex.getMessage());
+    }
+    @ExceptionHandler(UserNaoEncontrado.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handleUserNaoEncontrado(UserNaoEncontrado ex) {
         return new ApiError(ex.getMessage());
     }
 }

@@ -25,7 +25,6 @@ public class Usuario {
     @Column(name = "token")
     private String token;
 
-    @NotEmpty(message = "{campo.email.obrigatório}")
     @Column(name = "email")
     private String email;
 

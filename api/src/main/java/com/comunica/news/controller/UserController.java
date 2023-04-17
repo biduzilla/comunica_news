@@ -1,6 +1,8 @@
 package com.comunica.news.controller;
 
+import com.comunica.news.dto.TokenDto;
 import com.comunica.news.dto.UserDto;
+import com.comunica.news.dto.UserLoginDto;
 import com.comunica.news.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +19,13 @@ public class UserController {
 
     @PostMapping("cadastrar/")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto criarConta(@RequestBody @Valid UserDto user) {
-        return userService.cadastrarUser(user);
+    public void criarConta(@RequestBody @Valid UserDto user) {
+        userService.cadastrarUser(user);
+    }
+
+    @PostMapping("login/")
+    @ResponseStatus(HttpStatus.OK)
+    public TokenDto login(@RequestBody @Valid UserLoginDto userLoginDto) {
+        return userService.login(userLoginDto);
     }
 }
