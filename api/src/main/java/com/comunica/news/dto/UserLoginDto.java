@@ -2,6 +2,8 @@ package com.comunica.news.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.NotEmpty;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -9,6 +11,8 @@ import lombok.*;
 @ToString
 @Builder
 public class UserLoginDto {
+    @NotEmpty(message = "{campo.email.obrigatorio}")
     private String email;
+    @NotEmpty(message = "{campo.senha.obrigatório}")
     private String senha;
 }
