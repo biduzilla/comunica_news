@@ -14,5 +14,5 @@ public interface UserService {
     @Transactional
     void deletarUser(String token);
     UserDto getDados(String idUser);
-    TokenDto changeUserRole(String idUser);
+
 }

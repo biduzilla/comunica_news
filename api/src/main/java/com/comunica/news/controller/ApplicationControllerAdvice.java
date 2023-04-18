@@ -4,11 +4,14 @@ import com.comunica.news.erros.ApiError;
 import com.comunica.news.exception.*;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,6 +41,7 @@ public class ApplicationControllerAdvice {
     public ApiError handleTokenInvalidoException(TokenInvalidoException ex) {
         return new ApiError(ex.getMessage());
     }
+
     @ExceptionHandler(UserNaoEncontrado.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleUserNaoEncontrado(UserNaoEncontrado ex) {

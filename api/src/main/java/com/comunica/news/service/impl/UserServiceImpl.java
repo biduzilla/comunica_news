@@ -23,8 +23,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
     private final PasswordEncoder encoder;
+    private final UserRepository userRepository;
     private final UsuarioServiceAuthImpl usuarioServiceAuth;
     private final JwtService jwtService;
 
@@ -98,20 +98,4 @@ public class UserServiceImpl implements UserService {
                 .build();
     }
 
-    @Override
-    public TokenDto changeUserRole(String idUser) {
-        Usuario usuario = userRepository.findById(idUser).orElseThrow(UserNaoEncontrado::new);
-
-        usuario.setAdmin(true);
-
-        UserDetails userAutentificado = usuarioServiceAuth.autentificar(usuario);
-
-        String token = jwtService.gerarToken(usuario);
-
-        Usuario userPronto = userRepository.findByEmail(usuario.getEmail()).orElseThrow(UserNaoEncontrado::new);
-        userPronto.setToken(token);
-        userRepository.save(userPronto);
-
-        return new TokenDto(token, userPronto.getId());
-    }
 }

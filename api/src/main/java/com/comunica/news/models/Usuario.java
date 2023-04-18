@@ -18,7 +18,6 @@ import java.util.UUID;
 public class Usuario {
 
     @Id
-    @Column(name = "id")
     private String id;
 
     @Column(name = "nome")
@@ -36,7 +35,7 @@ public class Usuario {
     @Column(name = "admin")
     private boolean admin = false;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<Noticia> noticias;
 
 }

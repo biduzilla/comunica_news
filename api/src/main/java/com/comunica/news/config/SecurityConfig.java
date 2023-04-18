@@ -53,6 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/users/atualizar")
                 .hasRole("USER")
+                .antMatchers("/noticias/**")
+                .hasRole("USER")
                 .antMatchers("/h2-console/**")
                 .permitAll()
                 .antMatchers("/h2-console/")

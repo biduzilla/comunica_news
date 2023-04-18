@@ -47,10 +47,4 @@ public class UserController {
     public UserDto getDados(@PathVariable String idUser) {
         return userService.getDados(idUser);
     }
-
-    @PutMapping("getDados/{idUser}")
-    @ResponseStatus(HttpStatus.OK)
-    public TokenDto changeUserToAdmin(@PathVariable String idUser) {
-        return userService.changeUserRole(idUser);
-    }
 }
