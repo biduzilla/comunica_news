@@ -13,5 +13,6 @@ public interface UserService {
     void atualizar(UserUpdateDto userDto, String token);
     @Transactional
     void deletarUser(String token);
-
+    UserDto getDados(String idUser);
+    TokenDto changeUserRole(String idUser);
 }

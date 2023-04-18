@@ -88,4 +88,30 @@ public class UserServiceImpl implements UserService {
 
         userRepository.delete(usuario);
     }
+
+    @Override
+    public UserDto getDados(String idUser) {
+        Usuario usuario = userRepository.findById(idUser).orElseThrow(UserNaoEncontrado::new);
+        return UserDto.builder()
+                .email(usuario.getEmail())
+                .nome(usuario.getSenha())
+                .build();
+    }
+
+    @Override
+    public TokenDto changeUserRole(String idUser) {
+        Usuario usuario = userRepository.findById(idUser).orElseThrow(UserNaoEncontrado::new);
+
+        usuario.setAdmin(true);
+
+        UserDetails userAutentificado = usuarioServiceAuth.autentificar(usuario);
+
+        String token = jwtService.gerarToken(usuario);
+
+        Usuario userPronto = userRepository.findByEmail(usuario.getEmail()).orElseThrow(UserNaoEncontrado::new);
+        userPronto.setToken(token);
+        userRepository.save(userPronto);
+
+        return new TokenDto(token, userPronto.getId());
+    }
 }

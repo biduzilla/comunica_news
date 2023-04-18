@@ -15,7 +15,6 @@ import javax.validation.Valid;
 @RequestMapping("users/")
 @RequiredArgsConstructor
 public class UserController {
-
     private final UserService userService;
 
     @PostMapping("/cadastrar")
@@ -41,5 +40,17 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public void deletarUser(@PathVariable String idUser) {
         userService.deletarUser(idUser);
+    }
+
+    @GetMapping("getDados/{idUser}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto getDados(@PathVariable String idUser) {
+        return userService.getDados(idUser);
+    }
+
+    @PutMapping("getDados/{idUser}")
+    @ResponseStatus(HttpStatus.OK)
+    public TokenDto changeUserToAdmin(@PathVariable String idUser) {
+        return userService.changeUserRole(idUser);
     }
 }

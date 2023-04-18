@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.UUID;
 
 @Setter
@@ -17,6 +18,7 @@ import java.util.UUID;
 public class Usuario {
 
     @Id
+    @Column(name = "id")
     private String id;
 
     @Column(name = "nome")
@@ -33,5 +35,8 @@ public class Usuario {
 
     @Column(name = "admin")
     private boolean admin = false;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Noticia> noticias;
 
 }
