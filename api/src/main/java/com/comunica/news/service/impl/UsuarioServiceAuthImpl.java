@@ -1,6 +1,5 @@
 package com.comunica.news.service.impl;
 
-import com.comunica.news.exception.EmailNaoEncontrado;
 import com.comunica.news.exception.SenhaInvalidaException;
 import com.comunica.news.exception.TokenInvalidoException;
 import com.comunica.news.models.Usuario;
@@ -24,13 +23,13 @@ public class UsuarioServiceAuthImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = userRepository.findByEmail(username).orElseThrow(EmailNaoEncontrado::new);
+        Usuario usuario = userRepository.findByEmail(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado!"));
 
         String[] roles = usuario.isAdmin() ?
                 new String[]{"ADMIN", "USER"} : new String[]{"USER"};
-
-        return User.
-                builder()
+        return User
+                .builder()
                 .username(usuario.getEmail())
                 .password(usuario.getSenha())
                 .roles(roles)
@@ -38,14 +37,12 @@ public class UsuarioServiceAuthImpl implements UserDetailsService {
     }
 
     public UserDetails autentificar(Usuario usuario) {
-        UserDetails user = loadUserByUsername(usuario.getEmail());
-        boolean senhaBatem = encoder.matches(usuario.getSenha(), user.getPassword());
-
-        if (senhaBatem) {
-            return user;
-        } else {
-            throw new SenhaInvalidaException();
+        UserDetails userDetails = loadUserByUsername(usuario.getEmail());
+        boolean senhasBatem = encoder.matches(usuario.getSenha(), userDetails.getPassword());
+        if (senhasBatem) {
+            return userDetails;
         }
+        throw new SenhaInvalidaException();
     }
 
     public Usuario searchUserByToken(String token) {

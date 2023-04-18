@@ -8,6 +8,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -21,10 +22,11 @@ public class JwtService {
     @Value("${security.jwt.key}")
     private String key;
 
-    public String gerarToken(Usuario usuario) {
+    public String gerarToken(Usuario usuario) throws ExpiredJwtException {
         long expString = Long.parseLong(expiracao);
         LocalDateTime dataHoraExpiracao = LocalDateTime.now().plusMinutes(expString);
-        Date date = Date.from(dataHoraExpiracao.atZone(ZoneId.systemDefault()).toInstant());
+        Instant instant = dataHoraExpiracao.atZone(ZoneId.systemDefault()).toInstant();
+        Date date = Date.from(instant);
 
         return Jwts.builder()
                 .setSubject(usuario.getEmail())
@@ -33,27 +35,31 @@ public class JwtService {
                 .compact();
     }
 
-    public Claims obterClaims(String token) throws ExpiredJwtException {
-        return Jwts.parser()
+    private Claims obterClaims(String token) {
+        return Jwts
+                .parser()
                 .setSigningKey(key)
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
+
     }
 
-    public boolean validarToken(String token) {
+    public boolean tokenValid(String token) {
         try {
             Claims claims = obterClaims(token);
-            Date dataExpiracao = claims.getExpiration();
-            LocalDateTime localDateTime =
-                    dataExpiracao.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            Date dataExpiration = claims.getExpiration();
+            LocalDateTime data = dataExpiration
+                    .toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDateTime();
+            return !LocalDateTime.now().isAfter(data);
 
-            return !LocalDateTime.now().isAfter(localDateTime);
         } catch (Exception e) {
             return false;
         }
     }
 
     public String obterLoginUser(String token) throws ExpiredJwtException{
-        return obterClaims(token).getSubject();
+        return (String) obterClaims(token).getSubject();
     }
 }

@@ -32,7 +32,6 @@ public class Usuario {
     private String senha;
 
     @Column(name = "admin")
-    private boolean admin;
-
+    private boolean admin = false;
 
 }

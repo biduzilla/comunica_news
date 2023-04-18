@@ -3,8 +3,8 @@ package com.comunica.news.service.impl;
 import com.comunica.news.dto.TokenDto;
 import com.comunica.news.dto.UserDto;
 import com.comunica.news.dto.UserLoginDto;
+import com.comunica.news.dto.UserUpdateDto;
 import com.comunica.news.exception.EmailJaCadastrado;
-import com.comunica.news.exception.EmailNaoEncontrado;
 import com.comunica.news.exception.UserNaoEncontrado;
 import com.comunica.news.models.Usuario;
 import com.comunica.news.repository.UserRepository;
@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -59,13 +60,25 @@ public class UserServiceImpl implements UserService {
 
             Usuario userPronto = userRepository.findByEmail(usuario.getEmail()).orElseThrow(UserNaoEncontrado::new);
             userPronto.setToken(token);
-
             userRepository.save(userPronto);
 
             return new TokenDto(token);
+
         } catch (UsernameNotFoundException e) {
             throw new UserNaoEncontrado();
         }
+    }
 
+    @Override
+    public void atualizar(UserUpdateDto userDto, String token) {
+        Usuario usuario = usuarioServiceAuth.searchUserByToken(token);
+
+        String senhaCriptografada = encoder.encode(userDto.getSenha());
+        userDto.setSenha(senhaCriptografada);
+
+        usuario.setSenha(userDto.getSenha());
+        usuario.setNome(userDto.getNome());
+
+        userRepository.save(usuario);
     }
 }
