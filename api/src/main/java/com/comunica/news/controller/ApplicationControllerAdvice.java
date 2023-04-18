@@ -34,7 +34,7 @@ public class ApplicationControllerAdvice {
     }
 
     @ExceptionHandler(TokenInvalidoException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ApiError handleTokenInvalidoException(TokenInvalidoException ex) {
         return new ApiError(ex.getMessage());
     }

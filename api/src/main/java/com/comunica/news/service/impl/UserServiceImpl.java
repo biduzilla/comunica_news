@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
             userPronto.setToken(token);
             userRepository.save(userPronto);
 
-            return new TokenDto(token);
+            return new TokenDto(token, userPronto.getId());
 
         } catch (UsernameNotFoundException e) {
             throw new UserNaoEncontrado();
@@ -80,5 +80,12 @@ public class UserServiceImpl implements UserService {
         usuario.setNome(userDto.getNome());
 
         userRepository.save(usuario);
+    }
+
+    @Override
+    public void deletarUser(String idUser) {
+        Usuario usuario = userRepository.findById(idUser).orElseThrow(UserNaoEncontrado::new);
+
+        userRepository.delete(usuario);
     }
 }

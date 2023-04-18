@@ -10,4 +10,5 @@ import lombok.*;
 @Builder
 public class TokenDto {
     private String token;
+    private String idUser;
 }

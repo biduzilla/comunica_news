@@ -8,9 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface UserService {
     void cadastrarUser(UserDto usuario);
-
     TokenDto login(UserLoginDto login);
-
     @Transactional
     void atualizar(UserUpdateDto userDto, String token);
+    @Transactional
+    void deletarUser(String token);
+
 }

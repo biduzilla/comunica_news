@@ -30,11 +30,16 @@ public class UserController {
         return userService.login(userLoginDto);
     }
 
-    @CrossOrigin
     @PutMapping("/atualizar")
     @ResponseStatus(HttpStatus.OK)
     public void atualizarUser(@RequestBody UserUpdateDto user, @RequestHeader("Authorization") String token) {
         System.out.println(token);
         userService.atualizar(user, token);
+    }
+
+    @DeleteMapping("/deletar/{idUser}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deletarUser(@PathVariable String idUser) {
+        userService.deletarUser(idUser);
     }
 }
