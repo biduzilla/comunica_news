@@ -24,6 +24,12 @@ public class ApplicationControllerAdvice {
         return new ApiError(ex.getMessage());
     }
 
+    @ExceptionHandler(ComentariosNaoPublicados.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handleComentariosNaoPublicados(ComentariosNaoPublicados ex) {
+        return new ApiError(ex.getMessage());
+    }
+
     @ExceptionHandler(EmailNaoEncontrado.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ApiError handleEmailNaoEncontrado(EmailNaoEncontrado ex) {

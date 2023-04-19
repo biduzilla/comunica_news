@@ -2,6 +2,8 @@ package com.comunica.news.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -15,4 +17,5 @@ public class PostEnviadoDto {
     private String img;
     private String prazo;
     private String autor;
+    private List<ComentarioDto> comentarios;
 }

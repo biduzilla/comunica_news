@@ -11,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 @Builder
 public class ComentarioDto {
+    private String id;
     @NotEmpty(message = "{campo.comentario.obrigatorio}")
     private String comentario;
 }

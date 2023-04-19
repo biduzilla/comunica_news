@@ -1,11 +1,10 @@
 package com.comunica.news.service.impl;
 
+import com.comunica.news.dto.ComentarioDto;
 import com.comunica.news.dto.PostDto;
 import com.comunica.news.dto.PostEnviadoDto;
-import com.comunica.news.exception.PostNaoEncontrado;
-import com.comunica.news.exception.PostNaoTePertence;
-import com.comunica.news.exception.PostsNaoCadastrados;
-import com.comunica.news.exception.UserNaoEncontrado;
+import com.comunica.news.exception.*;
+import com.comunica.news.models.Comentario;
 import com.comunica.news.models.Post;
 import com.comunica.news.models.Usuario;
 import com.comunica.news.repository.PostRepository;
@@ -51,21 +50,41 @@ public class PostServiceImpl implements PostService {
         return postsToPostsDto(posts);
     }
 
-    private static List<PostEnviadoDto> postsToPostsDto(List<Post> posts) {
-        List<PostEnviadoDto> postsDto = posts.stream().map(post -> PostEnviadoDto.builder()
-                .id(post.getId())
-                .autor(post.getAutor())
-                .prazo(post.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
-                .titulo(post.getTitulo())
-                .descricao(post.getDescricao())
-                .img(post.getImg())
-                .build()).collect(Collectors.toList());
+    private List<PostEnviadoDto> postsToPostsDto(List<Post> posts) {
+        List<PostEnviadoDto> postsDto = posts.stream().map(post -> {
+
+            List<ComentarioDto> comentarioDtos = comentariosToDto(post.getComentarios());
+            return
+                    PostEnviadoDto.builder()
+                            .id(post.getId())
+                            .autor(post.getAutor())
+                            .prazo(post.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+                            .titulo(post.getTitulo())
+                            .descricao(post.getDescricao())
+                            .img(post.getImg())
+                            .comentarios(comentarioDtos)
+                            .build();
+        }).collect(Collectors.toList());
+
 
         if (postsDto.isEmpty()) {
             throw new PostsNaoCadastrados();
         }
 
         return postsDto;
+    }
+
+    private List<ComentarioDto> comentariosToDto(List<Comentario> comentarios) {
+        List<ComentarioDto> comentarioDtos = comentarios.stream().map(comentario -> ComentarioDto.builder()
+                .id(comentario.getId())
+                .comentario(comentario.getComentario())
+                .build()).collect(Collectors.toList());
+
+        if (comentarioDtos.isEmpty()) {
+            throw new ComentariosNaoPublicados();
+        }
+
+        return comentarioDtos;
     }
 
     @Override
@@ -112,12 +131,16 @@ public class PostServiceImpl implements PostService {
         postRepository.delete(post);
     }
 
-    private static PostEnviadoDto getPostEnviadoDto(Post post) {
+    private PostEnviadoDto getPostEnviadoDto(Post post) {
+
+        List<ComentarioDto> comentarioDtos = comentariosToDto(post.getComentarios());
+
         return PostEnviadoDto.builder()
                 .id(post.getId())
                 .autor(post.getAutor())
                 .titulo(post.getTitulo())
                 .descricao(post.getDescricao())
+                .comentarios(comentarioDtos)
                 .img(post.getImg())
                 .prazo(post.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
                 .build();
