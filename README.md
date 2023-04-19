@@ -2,7 +2,7 @@
 # Projeto Comunica News
 
 ## Sobre o projeto
-Projeto criado com a ideia de ser um app para disponibilizar posts sobre notícas e eventos sobre a IASD-NB.
+Projeto criado com a ideia de ser um app para disponibilizar posts sobre notícas e eventos sobre a IASD-NB com possibilidade de interação entre os membros através de comentários.
 A sua criação consite na criação da api construida com Spring Boot onde existirá verificação com token onde pode se realizar o cadastro de usuário, criação e visualização de posts dependendo da ROLE do usuario e alteração de posts.
 A parte do app é feita em Kotlin pensando no android nativo onde ocorre o consumo da api para visualização dos dados.
 
