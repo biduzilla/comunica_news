@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Setter
 @Getter
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @ToString
 @Entity
 @Builder
-@Table(name = "tab_noticia")
+@Table(name = "tab_posts")
 public class Post {
 
     @Id
@@ -36,4 +37,7 @@ public class Post {
     @JoinColumn(name = "usuario_id", nullable = false)
     @ManyToOne
     private Usuario usuario;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Comentario> comentarios;
 }
