@@ -11,4 +11,6 @@ public interface PostService {
     List<PostEnviadoDto> getAllMyPosts(String idUser);
     PostEnviadoDto getPostById(String postId);
     PostEnviadoDto getMyPostById(String postId, String userId);
+    void updatePost(PostDto postDto, String postId);
+    void deletePost(String postId);
 }

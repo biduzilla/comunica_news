@@ -19,8 +19,8 @@ public class PostController {
 
     @PostMapping("/salvarPost")
     @ResponseStatus(HttpStatus.CREATED)
-    public void criarNoticia(@RequestBody @Valid PostDto noticia, @RequestHeader("Authorization") String token) {
-        postService.criarPost(noticia, token);
+    public void criarNoticia(@RequestBody @Valid PostDto post, @RequestHeader("Authorization") String token) {
+        postService.criarPost(post, token);
     }
 
     @GetMapping("/getAllPosts")
@@ -39,5 +39,17 @@ public class PostController {
     @ResponseStatus(HttpStatus.OK)
     public PostEnviadoDto getPostById(@PathVariable String idPost) {
         return postService.getPostById(idPost);
+    }
+
+    @PutMapping("updatePost/{idPost}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updatePost(@RequestBody @Valid PostDto post, @PathVariable String idPost) {
+        postService.updatePost(post, idPost);
+    }
+
+    @DeleteMapping("deletePost/{idPost}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePost(@PathVariable String idPost){
+        postService.deletePost(idPost);
     }
 }

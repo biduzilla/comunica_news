@@ -95,6 +95,23 @@ public class PostServiceImpl implements PostService {
         return getPostEnviadoDto(post);
     }
 
+    @Override
+    public void updatePost(PostDto postDto, String postId) {
+        Post post = postRepository.findById(postId).orElseThrow(PostNaoEncontrado::new);
+
+        post.setTitulo(postDto.getTitulo());
+        post.setImg(postDto.getImg());
+        post.setDescricao(postDto.getDescricao());
+
+        postRepository.save(post);
+    }
+
+    @Override
+    public void deletePost(String postId) {
+        Post post = postRepository.findById(postId).orElseThrow(PostNaoEncontrado::new);
+        postRepository.delete(post);
+    }
+
     private static PostEnviadoDto getPostEnviadoDto(Post post) {
         return PostEnviadoDto.builder()
                 .id(post.getId())
