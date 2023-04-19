@@ -53,6 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/users/atualizar")
                 .hasRole("USER")
+                .antMatchers("/users/deletar/**")
+                .hasRole("ADMIN")
                 .antMatchers("/noticias/salvarPost")
                 .hasRole("ADMIN")
                 .antMatchers("/noticias/getAllPosts")

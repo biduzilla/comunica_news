@@ -77,6 +77,7 @@ Status 200 - OK
 
 ```bash
 #Update usuario
+Role: USER
 
 Método: Put
 
@@ -97,6 +98,7 @@ Status 200 - OK
 
 ```bash
 #Deletar usuario
+Role: ADMIN
 
 Método: Delete
 
@@ -112,6 +114,7 @@ Status 200 - OK
 ### Posts
 ```bash
 #Salvar post
+Role: ADMIN
 
 Método: Post
 
@@ -133,6 +136,7 @@ Status 201 - Created
 
 ```bash
 #Ver todos os posts
+Role: USER
 
 Método: Get
 
@@ -147,6 +151,7 @@ Status 200 - Ok
 
 ```bash
 #Ver todos os meus posts
+Role: ADMIN
 
 Método: Get
 
@@ -160,6 +165,7 @@ Status 200 - Ok
 ```
 ```bash
 #Ver post pelo id
+Role: USER
 
 Método: Get
 
@@ -174,6 +180,7 @@ Status 200 - Ok
 
 ```bash
 #Atualizar post
+Role: ADMIN
 
 Método: Put
 
@@ -195,6 +202,7 @@ Status 200 - Ok
 
 ```bash
 #Deletar post
+Role: ADMIN
 
 Método: Delete
 

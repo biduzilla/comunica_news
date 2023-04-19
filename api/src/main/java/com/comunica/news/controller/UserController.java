@@ -32,7 +32,6 @@ public class UserController {
     @PutMapping("/atualizar")
     @ResponseStatus(HttpStatus.OK)
     public void atualizarUser(@RequestBody UserUpdateDto user, @RequestHeader("Authorization") String token) {
-        System.out.println(token);
         userService.atualizar(user, token);
     }
 
