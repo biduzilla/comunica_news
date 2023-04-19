@@ -196,7 +196,7 @@ Status 200 - Ok
 ```bash
 #Deletar post
 
-Método: Put
+Método: Delete
 
 endpoint: /posts/deletePost/id_post
 
