@@ -3,9 +3,7 @@ package com.comunica.news.models;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
-import java.util.UUID;
 
 @Setter
 @Getter
@@ -36,6 +34,6 @@ public class Usuario {
     private boolean admin = false;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<Noticia> noticias;
+    private List<Post> posts;
 
 }

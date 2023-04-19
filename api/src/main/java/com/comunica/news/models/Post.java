@@ -1,10 +1,6 @@
 package com.comunica.news.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 @Builder
 @Table(name = "tab_noticia")
-public class Noticia {
+public class Post {
 
     @Id
     private String id;

@@ -48,6 +48,25 @@ public class ApplicationControllerAdvice {
         return new ApiError(ex.getMessage());
     }
 
+    @ExceptionHandler(PostNaoEncontrado.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handlePostNaoEncontrado(PostNaoEncontrado ex) {
+        return new ApiError(ex.getMessage());
+    }
+
+    @ExceptionHandler(PostNaoTePertence.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handlePostNaoTePertence(PostNaoTePertence ex) {
+        return new ApiError(ex.getMessage());
+    }
+
+    @ExceptionHandler(PostsNaoCadastrados.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handlePostsNaoCadastrados(PostsNaoCadastrados ex) {
+        return new ApiError(ex.getMessage());
+    }
+
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleMethodNotValidException(MethodArgumentNotValidException ex) {

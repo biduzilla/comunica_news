@@ -2,9 +2,7 @@ package com.comunica.news.dto;
 
 import lombok.*;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotEmpty;
-import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -12,7 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 @Builder
-public class NoticiaDto {
+public class PostDto {
     @NotEmpty(message = "{campo.titulo.obrigatorio}")
     private String titulo;
 
