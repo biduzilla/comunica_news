@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="8dp"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:padding="16dp"
                     android:textColor="@color/verdigris"
                     android:textSize="20sp"

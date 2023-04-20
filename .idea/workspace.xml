@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee84b0f-d252-4474-87a0-821a51f53729" name="Changes" comment="" />
+    <list default="true" id="0ee84b0f-d252-4474-87a0-821a51f53729" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ComunicaNews/app/src/main/java/com/toddy/comunicanews/models/User.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComunicaNews/app/src/main/java/com/toddy/comunicanews/webClient/FirebaseDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComunicaNews/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ComunicaNews/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComunicaNews/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ComunicaNews/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComunicaNews/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ComunicaNews/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComunicaNews/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ComunicaNews/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComunicaNews/app/src/main/java/com/toddy/comunicanews/ui/activity/auth/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ComunicaNews/app/src/main/java/com/toddy/comunicanews/ui/activity/auth/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComunicaNews/app/src/main/java/com/toddy/comunicanews/ui/activity/auth/RecuperarContaActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ComunicaNews/app/src/main/java/com/toddy/comunicanews/ui/activity/auth/RecuperarContaActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComunicaNews/app/src/main/res/layout/activity_criar_conta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ComunicaNews/app/src/main/res/layout/activity_criar_conta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComunicaNews/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ComunicaNews/app/src/main/res/values-night/themes.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,13 +41,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/lhcteles/Desktop/code/projetos/newsComunica"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lhcteles/Desktop/code/projetos/newsComunica&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="news" />

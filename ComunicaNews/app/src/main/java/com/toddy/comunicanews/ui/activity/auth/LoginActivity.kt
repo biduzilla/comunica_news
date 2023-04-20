@@ -21,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
     private fun configClicks() {
         with(binding) {
             btnCriarConta.setOnClickListener { iniciaActivity(CriarContaActivity::class.java) }
+            btnRecuperarSenha.setOnClickListener { iniciaActivity(RecuperarContaActivity::class.java) }
         }
     }
 }

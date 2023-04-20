@@ -13,5 +13,13 @@ class RecuperarContaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        configClick()
+    }
+
+    private fun configClick() {
+        with(binding){
+            toolbarVoltar.btnVoltar.setOnClickListener { finish() }
+        }
     }
 }
