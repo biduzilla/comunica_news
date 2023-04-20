@@ -1,4 +1,4 @@
-package com.toddy.comunicanews.ui.activity.app
+package com.toddy.comunicanews.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

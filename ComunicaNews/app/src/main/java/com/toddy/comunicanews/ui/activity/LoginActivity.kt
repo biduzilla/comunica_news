@@ -1,12 +1,17 @@
-package com.toddy.comunicanews.ui.activity.app
+package com.toddy.comunicanews.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.toddy.comunicanews.R
+import androidx.appcompat.app.AppCompatActivity
+import com.toddy.comunicanews.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+
+    private val binding by lazy {
+        ActivityLoginBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(binding.root)
     }
 }

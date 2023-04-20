@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">ComunicaNews</string>
     <string name="e_mail">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="comunica_news">Comunica News</string>
+    <string name="login">Login</string>
+    <string name="n_possui_conta">Não possui conta?</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="esqueci_a_senha">Esqueci a senha</string>
 </resources>
