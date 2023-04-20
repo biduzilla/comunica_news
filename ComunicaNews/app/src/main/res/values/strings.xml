@@ -7,4 +7,7 @@
     <string name="n_possui_conta">Não possui conta?</string>
     <string name="cadastrar">Cadastrar</string>
     <string name="esqueci_a_senha">Esqueci a senha</string>
+    <string name="confirmar_senha">Confirmar Senha</string>
+    <string name="nome">Nome</string>
+    <string name="telefone">Telefone</string>
 </resources>

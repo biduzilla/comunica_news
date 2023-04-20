@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import com.toddy.comunicanews.R
 import com.toddy.comunicanews.extensions.iniciaActivity
+import com.toddy.comunicanews.ui.activity.auth.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

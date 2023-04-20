@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.activity.LoginActivity">
+    tools:context=".ui.activity.auth.LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp"
+            android:layout_margin="32dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -46,11 +46,12 @@
                 app:hintTextColor="@color/text_input_box_stroke">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edt_titulo"
+                    android:id="@+id/edt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="8dp"
+                    android:textSize="20sp"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/verdigris"
                     app:drawableTint="@color/text_input_box_stroke" />
@@ -76,12 +77,14 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_key"
                     android:drawablePadding="8dp"
+                    android:textSize="20sp"
                     android:inputType="textPassword"
                     android:textColor="@color/verdigris"
                     app:drawableTint="@color/text_input_box_stroke" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btn_recuperar_senha"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,11 +109,12 @@
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/btn_press_esmerald"
                 android:text="@string/login"
+                android:paddingVertical="16dp"
                 android:textAllCaps="false"
-                android:textColor="@color/lapis_lazuli"
+                android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -129,6 +133,7 @@
                     android:textSize="18sp" />
 
                 <Button
+                    android:id="@+id/btn_criar_conta"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
