@@ -11,4 +11,6 @@
     <string name="nome">Nome</string>
     <string name="telefone">Telefone</string>
     <string name="texto_recuperar_senha">Informe seu e-mail que enviaremos \num link para alteração de senha</string>
+    <string name="criar_conta">Criar Conta</string>
+    <string name="recuperar_senha">Recuperar senha</string>
 </resources>

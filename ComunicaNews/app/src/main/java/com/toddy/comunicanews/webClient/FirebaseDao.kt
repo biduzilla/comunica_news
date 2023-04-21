@@ -33,4 +33,8 @@ class FirebaseDao {
                 }
             }
     }
+
+    fun salvarUser(user: User){
+
+    }
 }
