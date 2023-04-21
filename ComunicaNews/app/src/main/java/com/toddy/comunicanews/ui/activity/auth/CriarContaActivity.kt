@@ -1,6 +1,7 @@
 package com.toddy.comunicanews.ui.activity.auth
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.toddy.comunicanews.databinding.ActivityCriarContaBinding
 import com.toddy.comunicanews.models.User
@@ -23,6 +24,7 @@ class CriarContaActivity : AppCompatActivity() {
         with(binding) {
             toolbarVoltar.tvTitulo.text = "Criar Conta"
             toolbarVoltar.btnVoltar.setOnClickListener { finish() }
+            btnLogin.setOnClickListener { validaDados() }
         }
     }
 
@@ -63,11 +65,16 @@ class CriarContaActivity : AppCompatActivity() {
                     edtSenhaConfirmar.requestFocus()
                     edtSenhaConfirmar.error = "Senhas não Batem!"
                 }
-            }
-            val user =
-                User(email = email, senha = senha, nome = nome, telefone = telefone, admin = true)
+                else -> {
+                    btnLogin.visibility = View.GONE
+                    progressCircular.visibility = View.VISIBLE
 
-            FirebaseDao().criarConta(this@CriarContaActivity, binding, user)
+                    val user =
+                        User(email = email, senha = senha, nome = nome, telefone = telefone, admin = true)
+
+                    FirebaseDao().criarConta(this@CriarContaActivity, binding, user)
+                }
+            }
         }
     }
 }
