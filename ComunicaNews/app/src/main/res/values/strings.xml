@@ -13,4 +13,8 @@
     <string name="texto_recuperar_senha">Informe seu e-mail que enviaremos \num link para alteração de senha</string>
     <string name="criar_conta">Criar Conta</string>
     <string name="recuperar_senha">Recuperar senha</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="posts_mais_recentes">Posts Mais Recentes</string>
 </resources>

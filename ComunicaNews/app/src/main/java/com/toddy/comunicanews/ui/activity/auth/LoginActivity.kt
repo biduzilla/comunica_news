@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
                     progressCircular.visibility = View.VISIBLE
                     btnLogin.visibility = View.GONE
 
-                    FirebaseDao().recuperarSenha(email, baseContext)
+                    FirebaseDao().login(this@LoginActivity,email = email, senha = senha, )
                 }
             }
         }
