@@ -1,7 +1,9 @@
 package com.toddy.comunicanews.ui.activity.auth
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.toddy.comunicanews.databinding.ActivityCriarContaBinding
 import com.toddy.comunicanews.models.User
@@ -66,6 +68,7 @@ class CriarContaActivity : AppCompatActivity() {
                     edtSenhaConfirmar.error = "Senhas não Batem!"
                 }
                 else -> {
+                    ocultarTeclado()
                     btnLogin.visibility = View.GONE
                     progressCircular.visibility = View.VISIBLE
 
@@ -76,5 +79,11 @@ class CriarContaActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun ocultarTeclado() {
+        val imm =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.btnLogin.windowToken, 0)
     }
 }

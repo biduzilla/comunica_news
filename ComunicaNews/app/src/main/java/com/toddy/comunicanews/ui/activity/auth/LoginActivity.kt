@@ -1,7 +1,9 @@
 package com.toddy.comunicanews.ui.activity.auth
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.toddy.comunicanews.databinding.ActivityLoginBinding
 import com.toddy.comunicanews.extensions.iniciaActivity
@@ -43,13 +45,21 @@ class LoginActivity : AppCompatActivity() {
                     edtSenha.error = "Campo Obrigatório"
                 }
                 else -> {
+                    ocultarTeclado()
                     progressCircular.visibility = View.VISIBLE
                     btnLogin.visibility = View.GONE
 
-                    FirebaseDao().login(this@LoginActivity,email = email, senha = senha, )
+                    FirebaseDao().login(this@LoginActivity, email = email, senha = senha)
                 }
             }
         }
+    }
+
+
+    private fun ocultarTeclado() {
+        val imm =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.btnLogin.windowToken, 0)
     }
 
 }

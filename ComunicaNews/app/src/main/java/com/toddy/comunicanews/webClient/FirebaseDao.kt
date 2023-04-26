@@ -29,9 +29,8 @@ class FirebaseDao {
                 if (task.isSuccessful) {
                     task.result.user?.let { FirebaseUser ->
                         val idUser = FirebaseUser.uid
-                        salvarUser(userCriado)
-
-                        activity.baseContext.iniciaActivity(LoginActivity::class.java)
+                        userCriado.id = idUser
+                        salvarUser(userCriado, activity)
                     }
                 } else {
                     binding.progressCircular.visibility = View.GONE
@@ -44,12 +43,14 @@ class FirebaseDao {
             }
     }
 
-    fun salvarUser(user: User) {
+    fun salvarUser(user: User, activity: Activity? = null) {
         FirebaseDatabase.getInstance().reference
             .child("users")
             .child("admin")
             .child(user.id!!)
             .setValue(user)
+
+        activity?.iniciaActivity(LoginActivity::class.java)
     }
 
     fun recuperarSenha(email: String, context: Context) {

@@ -1,8 +1,10 @@
 package com.toddy.comunicanews.ui.activity.auth
 
 import android.app.Activity
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import com.toddy.comunicanews.databinding.ActivityRecuperarContaBinding
 import com.toddy.comunicanews.webClient.FirebaseDao
 
@@ -34,8 +36,16 @@ class RecuperarContaActivity : AppCompatActivity() {
                 binding.edtEmail.error = "Campo Obrigatório"
             }
             else -> {
+                ocultarTeclado()
                 FirebaseDao().recuperarSenha(email, baseContext)
             }
         }
+    }
+
+
+    private fun ocultarTeclado() {
+        val imm =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.btnLogin.windowToken, 0)
     }
 }
