@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menu_posts">
+
+    <fragment
+        android:id="@+id/menu_posts"
+        android:name="com.toddy.comunicanews.ui.activity.fragments.PostsFragment"
+        android:label="fragment_posts"
+        tools:layout="@layout/fragment_posts" />
+    <fragment
+        android:id="@+id/menu_eventos"
+        android:name="com.toddy.comunicanews.ui.activity.fragments.EventosFragment"
+        android:label="fragment_eventos"
+        tools:layout="@layout/fragment_eventos" />
+    <fragment
+        android:id="@+id/menu_pedidos"
+        android:name="com.toddy.comunicanews.ui.activity.fragments.MeditacaoFragment"
+        android:label="fragment_meditacao"
+        tools:layout="@layout/fragment_meditacao" />
+</navigation>

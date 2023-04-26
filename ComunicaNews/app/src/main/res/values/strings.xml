@@ -17,4 +17,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pesquisar">Pesquisar</string>
     <string name="posts_mais_recentes">Posts Mais Recentes</string>
+    <string name="posts">Posts</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="eventos">Eventos</string>
 </resources>
