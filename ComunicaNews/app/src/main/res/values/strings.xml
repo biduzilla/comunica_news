@@ -20,4 +20,8 @@
     <string name="posts">Posts</string>
     <string name="pedidos">Pedidos</string>
     <string name="eventos">Eventos</string>
+    <string name="titulo">Título</string>
+    <string name="salvar">Salvar</string>
+    <string name="descricao">Descrição</string>
+    <string name="nao_logado">Você não está logado na sua conta, faça o login para poder acessar o app</string>
 </resources>

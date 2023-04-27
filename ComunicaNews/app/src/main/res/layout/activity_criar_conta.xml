@@ -110,7 +110,7 @@
                         android:textColor="@color/verdigris"
                         android:textSize="20sp"
                         app:drawableTint="@color/text_input_box_stroke"
-                        app:mask="(__) _____ ____"
+                        app:mask="(__) _____-____"
                         app:maskCharacter="_"
                         app:maskStyle="completable" />
                 </com.google.android.material.textfield.TextInputLayout>

@@ -7,7 +7,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.toddy.comunicanews.databinding.ActivityLoginBinding
 import com.toddy.comunicanews.extensions.iniciaActivity
-import com.toddy.comunicanews.webClient.FirebaseDao
+import com.toddy.comunicanews.webClient.UserDao
 
 class LoginActivity : AppCompatActivity() {
 
@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
                     progressCircular.visibility = View.VISIBLE
                     btnLogin.visibility = View.GONE
 
-                    FirebaseDao().login(this@LoginActivity, email = email, senha = senha)
+                    UserDao().login(this@LoginActivity, email = email, senha = senha)
                 }
             }
         }

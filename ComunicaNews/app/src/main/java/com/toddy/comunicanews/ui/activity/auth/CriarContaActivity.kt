@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.toddy.comunicanews.databinding.ActivityCriarContaBinding
 import com.toddy.comunicanews.models.User
 import com.toddy.comunicanews.utils.isValidEmail
-import com.toddy.comunicanews.webClient.FirebaseDao
+import com.toddy.comunicanews.webClient.UserDao
 
 class CriarContaActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -75,7 +75,7 @@ class CriarContaActivity : AppCompatActivity() {
                     val user =
                         User(email = email, senha = senha, nome = nome, telefone = telefone, admin = true)
 
-                    FirebaseDao().criarConta(this@CriarContaActivity, binding, user)
+                    UserDao().criarConta(this@CriarContaActivity, binding, user)
                 }
             }
         }

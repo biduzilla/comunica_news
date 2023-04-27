@@ -3,12 +3,15 @@ package com.toddy.comunicanews.webClient
 import android.app.Activity
 import android.content.Context
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.ValueEventListener
 import com.toddy.comunicanews.databinding.ActivityCriarContaBinding
 import com.toddy.comunicanews.databinding.ActivityLoginBinding
+import com.toddy.comunicanews.databinding.DialogUserLogarBinding
 import com.toddy.comunicanews.extensions.Toast
 import com.toddy.comunicanews.extensions.iniciaActivity
 import com.toddy.comunicanews.models.User
@@ -16,7 +19,7 @@ import com.toddy.comunicanews.ui.activity.HomeActivity
 import com.toddy.comunicanews.ui.activity.auth.LoginActivity
 import com.toddy.comunicanews.utils.FireBaseHelper
 
-class FirebaseDao {
+class UserDao {
 
     fun criarConta(
         activity: Activity,
@@ -85,5 +88,60 @@ class FirebaseDao {
                     ).show()
                 }
             }
+    }
+
+    fun getIdUser(activity: Activity): String? {
+        FirebaseAuth.getInstance().currentUser?.let {
+            return it.uid
+        }
+        android.widget.Toast.makeText(
+            activity.baseContext,
+            "Usuario não logado na conta",
+            android.widget.Toast.LENGTH_SHORT
+        )
+            .show()
+        dialogLogarNovamente(activity)
+        return null
+    }
+
+    private fun dialogLogarNovamente(activity: Activity) {
+        DialogUserLogarBinding.inflate(activity.layoutInflater).apply {
+            val dialog = AlertDialog.Builder(activity)
+                .setView(root)
+                .create()
+
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.show()
+
+            btnLogin.setOnClickListener {
+                FirebaseAuth.getInstance().signOut()
+                activity.iniciaActivity(LoginActivity::class.java)
+                activity.finish()
+            }
+        }
+    }
+
+    fun getUser(activity: Activity, userRecuperado: (userRecuperado: User) -> Unit) {
+        getIdUser(activity)?.let { idUser ->
+            FirebaseDatabase.getInstance().reference
+                .child("users")
+                .child("admin")
+                .child(idUser)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            snapshot.getValue(User::class.java)?.let {
+                                userRecuperado(it)
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
+        }
     }
 }
