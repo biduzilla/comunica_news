@@ -2,6 +2,7 @@ package com.toddy.comunicanews.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.toddy.comunicanews.databinding.ActivityFormPostBinding
@@ -43,22 +44,23 @@ class FormPostActivity : AppCompatActivity() {
                     edtDesc.error = "Campo Obrigatório"
                 }
                 else -> {
+                    progressCircular.visibility = View.VISIBLE
+                    btnLogin.visibility = View.GONE
 
                     if (post == null) post = Post()
                     salvarPost(post!!)
                 }
             }
         }
-
     }
 
     private fun salvarPost(post: Post) {
-        UserDao().getUser(this@FormPostActivity) {
+        UserDao.getUser(this@FormPostActivity) {
             post.autor = it.nome
         }
         post.id = FirebaseDatabase.getInstance().reference.push().key
 
-        PostDao().salvarPost(post, this@FormPostActivity,!isUpdate)
+        PostDao.salvarPost(post, this@FormPostActivity,!isUpdate)
 
     }
 }

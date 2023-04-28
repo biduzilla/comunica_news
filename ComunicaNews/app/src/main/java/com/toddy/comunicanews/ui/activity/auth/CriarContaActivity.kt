@@ -77,7 +77,7 @@ class CriarContaActivity : AppCompatActivity() {
                     val user =
                         User(email = email, senha = senha, nome = nome, telefone = telefone, admin = true)
 
-                    UserDao().criarConta(this@CriarContaActivity, binding, user)
+                    UserDao.criarConta(this@CriarContaActivity, binding, user)
                 }
             }
         }

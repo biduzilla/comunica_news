@@ -56,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textImeMultiLine"
                     android:textColor="@color/verdigris"
                     android:textSize="20sp"
                     app:drawableTint="@color/text_input_box_stroke" />
@@ -88,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textImeMultiLine"
                     android:paddingVertical="48dp"
                     android:textColor="@color/verdigris"
                     android:textSize="20sp"

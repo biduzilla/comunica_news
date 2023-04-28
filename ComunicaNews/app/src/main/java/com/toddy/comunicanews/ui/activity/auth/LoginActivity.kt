@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
                     progressCircular.visibility = View.VISIBLE
                     btnLogin.visibility = View.GONE
 
-                    UserDao().login(this@LoginActivity, email = email, senha = senha)
+                    UserDao.login(this@LoginActivity, email = email, senha = senha)
                 }
             }
         }

@@ -62,4 +62,7 @@ dependencies {
 
     //https://github.com/santalu/maskara
     implementation 'com.github.santalu:maskara:1.0.0'
+
+    //https://developer.android.com/topic/libraries/architecture/datastore?hl=pt-br
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }

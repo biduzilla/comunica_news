@@ -38,7 +38,7 @@ class RecuperarContaActivity : AppCompatActivity() {
             }
             else -> {
                 ocultarTeclado()
-                UserDao().recuperarSenha(email, baseContext)
+                UserDao.recuperarSenha(email, baseContext)
             }
         }
     }
