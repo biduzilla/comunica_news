@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ComunicaNews"
         tools:targetApi="31">
         <activity
-            android:name=".FormPostActivity"
+            android:name=".ui.activity.FormPostActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

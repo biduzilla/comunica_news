@@ -16,6 +16,8 @@ class RecuperarContaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.toolbarVoltar.tvTitulo.text = "Recuperar Senha"
+
         configClick()
     }
 

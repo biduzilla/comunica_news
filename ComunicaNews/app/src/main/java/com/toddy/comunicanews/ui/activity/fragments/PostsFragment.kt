@@ -19,10 +19,8 @@ class PostsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        FragmentPostsBinding.inflate(inflater, container, false)
+        _binding = FragmentPostsBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,7 +30,7 @@ class PostsFragment : Fragment() {
 
     private fun configClicks() {
         with(binding) {
-            btnAdd.setOnClickListener { requireActivity().iniciaActivity(FormPostActivity::class.java) }
+            btnAdd.setOnClickListener { requireContext().iniciaActivity(FormPostActivity::class.java) }
         }
     }
 
